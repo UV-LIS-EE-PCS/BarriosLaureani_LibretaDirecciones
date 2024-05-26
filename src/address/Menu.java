@@ -26,7 +26,7 @@ public class Menu {
             importedAddressBook.add(firstName, lastName, street, city, state, zipCode, email, phoneNumber);
             System.out.println("Contact added successfully!");
         } catch (Exception e) {
-            System.out.println("Error al agregar el contacto: " + e.getMessage());
+            System.out.println("There was an error adding the contact: " + e.getMessage());
         }
     }
 }

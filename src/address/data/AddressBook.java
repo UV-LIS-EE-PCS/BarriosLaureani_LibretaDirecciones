@@ -8,7 +8,7 @@ public class AddressBook {
     private static AddressBook instance = null;
     ArrayList<AddressEntry> addressEntries;
     private AddressBook() {
-        this.addressEntries= new ArrayList<>();
+        this.addressEntries = new ArrayList<>();
     }
 
     public static AddressBook getInstance() {
@@ -35,7 +35,7 @@ public class AddressBook {
     // Método que permite almacenar una entrada de directorio en forma de archivo .txt o bloc de notas
     public void saveToFile(AddressEntry tempEntry) {
         try (FileWriter saveEntry = new FileWriter(tempEntry.getLastName() + "_" + tempEntry.getFirstName() + ".txt")) {
-            saveEntry.write(tempEntry.toString());;
+            saveEntry.write(tempEntry.toString());
         } catch (Exception e) {
            e.printStackTrace();
         }
@@ -79,9 +79,30 @@ public class AddressBook {
         }
     }
 
-    // Método que permite remover una entrada mediante el apellido de la persona
+    // Métodos que permiten remover una entrada mediante el apellido de la persona
+
+    public void seek(String lastName) {
+        boolean found = false;
+        for(int i = 0; i < addressEntries.size(); i++) {
+            AddressEntry tempEntry;
+            tempEntry = addressEntries.get(i);
+            AddressEntry choosenEntry;
+            if (tempEntry.getLastName().equalsIgnoreCase(lastName)) {
+                choosenEntry = tempEntry;
+                System.out.println("This entry was found: ");
+                System.out.println(choosenEntry.toString());
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("There are no contacts with that last name. ");
+        }
+    }
+
     public void remove(String lastName) {
         addressEntries.removeIf(tempEntry -> tempEntry.getLastName().equalsIgnoreCase(lastName));
+        System.out.println("This entry was removed successfully. ");
     }
 
     // Mostrar todas las entradas registradas en el Arraylist de directorio
