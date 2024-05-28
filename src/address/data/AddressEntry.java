@@ -16,15 +16,15 @@ public class AddressEntry {
 
     }
 
-    public AddressEntry(String firstName, String lastName, String street, String city, String state, int zipCode, String phoneNumber, String email) {
+    public AddressEntry(String firstName, String lastName, String street, String city, String state, int zipCode, String email, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
-        this.phoneNumber = phoneNumber;
         this.email = email;
+        this.phoneNumber = phoneNumber;
     }
     
     // serie de setters y getters

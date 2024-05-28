@@ -68,7 +68,7 @@ public class AddressBook {
         for(int i = 0; i < addressEntries.size(); i++) {
             AddressEntry tempEntry;
             tempEntry = addressEntries.get(i);
-            if (tempEntry.getLastName().contains(startOfLastName)) {
+            if (tempEntry.getLastName().toLowerCase().contains(startOfLastName.toLowerCase())) {
                 coincidences.add(tempEntry);
             }
         }
