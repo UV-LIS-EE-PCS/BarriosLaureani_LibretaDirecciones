@@ -1,6 +1,10 @@
 package address;
 import address.data.*;
 public class Menu {
+    private AddressBook menuBook;
+    public Menu(AddressBook menuBook) {
+        this.menuBook = menuBook;
+    }
     public void displayMenu() {
         System.out.println("===============================");
         System.out.println("Choose an option from the menu");
@@ -13,18 +17,23 @@ public class Menu {
         System.out.println("===============================");
     }
 
-    private AddressEntry createAddressEntry(String firstName, String lastName, String street, String city, String state, int zipCode, String email, String phoneNumber) throws Exception {
-        if (firstName.isEmpty() || lastName.isEmpty() || street.isEmpty() || city.isEmpty() || state.isEmpty() || email.isEmpty() || phoneNumber.isEmpty()) {
-            throw new Exception("Every field must be completed");
+    public boolean contactExists(String firstName, String lastName) {
+        for(AddressEntry tempEntry : menuBook.getEntries()) {
+            if (tempEntry.getFirstName().equalsIgnoreCase(firstName) && tempEntry.getLastName().equalsIgnoreCase(lastName)) {
+                return true;
+            }
         }
-        return new AddressEntry(firstName, lastName, street, city, state, zipCode, email, phoneNumber);
+        return false;
     }
-
+    
     public void addCheck(String firstName, String lastName, String street, String city, String state, int zipCode, String email, String phoneNumber) {
         try {
-            AddressBook importedAddressBook = AddressBook.getInstance();
-            importedAddressBook.add(firstName, lastName, street, city, state, zipCode, email, phoneNumber);
-            System.out.println("Contact added successfully!");
+            if (!contactExists(firstName, lastName)) {
+                menuBook.add(firstName, lastName, street, city, state, zipCode, email, phoneNumber);
+                System.out.println("Contact added successfully!");
+            } else {
+                System.out.println("This contact already exists and won't be added again.");
+            }
         } catch (Exception e) {
             System.out.println("There was an error adding the contact: " + e.getMessage());
         }

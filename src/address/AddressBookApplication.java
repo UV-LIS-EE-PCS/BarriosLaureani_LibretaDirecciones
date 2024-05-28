@@ -2,13 +2,11 @@ package address;
 
 import address.data.*;
 import java.util.Scanner;
-import java.util.ArrayList;
 public class AddressBookApplication {
     public static void main(String[] args) {
-        Menu start = new Menu();
         Scanner sc = new Scanner(System.in);
         AddressBook addressEntries = AddressBook.getInstance();
-
+        Menu start = new Menu(addressEntries);
         boolean runProgram = true;
         while(runProgram == true) {
             start.displayMenu();
@@ -37,24 +35,28 @@ public class AddressBookApplication {
                     String email = sc.nextLine();
                     System.out.println("Phone number");
                     String phoneNumber = sc.nextLine();
-                    start.addCheck(firstName, lastName, street, city, state, zipCode, email, phoneNumber);
-                    addressEntries.add(firstName, lastName, street, city, state, zipCode, email, phoneNumber);
-                    AddressEntry tempEntry = new AddressEntry(firstName, lastName, street, city, state, zipCode, email, phoneNumber);
-                    boolean saving = true;
-                    do {
-                        System.out.println("Would you like to save this entry into a text file? y/n");
-                        char confirmation = sc.next().charAt(0);
-                        if (confirmation == 'y') {
-                            addressEntries.saveToFile(tempEntry);
-                            System.out.println("This entry is now saved on a .txt File. ");
-                            saving = false;
-                        } else if (confirmation == 'n') {
-                            System.out.println("This entry isn't saved. It will lose after the program stops. ");
-                            saving = false;
-                        } else {
-                            System.out.println("Please choose a valid option. ");
-                        }
-                    } while (saving == true); 
+                    if (!start.contactExists(firstName, lastName)) {
+                        start.addCheck(firstName, lastName, street, city, state, zipCode, email, phoneNumber);
+                        AddressEntry tempEntry = new AddressEntry(firstName, lastName, street, city, state, zipCode, email, phoneNumber);
+                        boolean saving = true;
+                        do {
+                            System.out.println("Would you like to save this entry into a text file? y/n");
+                            char confirmation = sc.next().charAt(0);
+                            sc.nextLine();
+                            if (confirmation == 'y') {
+                                addressEntries.saveToFile(tempEntry);
+                                System.out.println("This entry is now saved on a .txt File. ");
+                                saving = false;
+                            } else if (confirmation == 'n') {
+                                System.out.println("This entry isn't saved. It will lose after the program stops. ");
+                                saving = false;
+                            } else {
+                                System.out.println("Please choose a valid option. ");
+                            }
+                        } while (saving == true); 
+                    } else {
+                        System.out.println("This contact already exists and won't be added again.");
+                    }
                     break;
                 case "b":
                     System.out.println("Enter the file name");
@@ -72,6 +74,7 @@ public class AddressBookApplication {
                     addressEntries.seek(seekLastName);
                     System.out.println("Are you sure you wanna remove this contact? y/n");
                     char response = sc.next().charAt(0);
+                    sc.nextLine();
                     if (response == 'y') {
                         addressEntries.remove(seekLastName);
                     } else if (response == 'n') {
@@ -89,5 +92,6 @@ public class AddressBookApplication {
                     System.out.println("Invalid option. Try again.");
             }
         }
+        sc.close();
     }
 }

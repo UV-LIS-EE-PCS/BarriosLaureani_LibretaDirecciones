@@ -5,17 +5,20 @@ import java.util.Comparator;
 public class AddressBook {
 
     // Instanciación del Arraylist con las entradas de directorio
-    private static AddressBook instance = null;
-    ArrayList<AddressEntry> addressEntries;
-    private AddressBook() {
-        this.addressEntries = new ArrayList<>();
-    }
+    private ArrayList<AddressEntry> addressEntries = new ArrayList<>();
+    private static AddressBook instance;
+
+    private AddressBook() {}
 
     public static AddressBook getInstance() {
         if (instance == null) {
             instance = new AddressBook();
         }
         return instance;
+    }
+
+    public ArrayList<AddressEntry> getEntries() {
+        return addressEntries;
     }
 
     // Método para añadir entradas de directorio al Arraylist de estos objetos
@@ -73,7 +76,7 @@ public class AddressBook {
             System.out.println("There are no contacts with that last name.");
         } else {
             for(int i = 0; i < coincidences.size(); i++) {
-                System.out.println("Coincidence number " + i+1);
+                System.out.println("Coincidence number " + (i+1));
                 System.out.println(coincidences.get(i).toString());
             }
         }
