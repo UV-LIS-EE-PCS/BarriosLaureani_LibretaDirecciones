@@ -249,10 +249,13 @@ public class AddressBook {
             int index = 0;
             String line;
             while ((line = loadEntry.readLine()) != null) {
-                addressElements[index] = line;
+                addressElements[index] = line.trim();
                 index++;
+                if (index == 8) {
+                    add(addressElements[0], addressElements[1], addressElements[2], addressElements[3], addressElements[4], Integer.parseInt(addressElements[5]), addressElements[6], addressElements[7]);
+                    index = 0;
+                }
             }
-            add(addressElements[0], addressElements[1], addressElements[2], addressElements[3], addressElements[4], Integer.parseInt(addressElements[5]), addressElements[6], addressElements[7]);
             System.out.println("File " + filename + " loaded successfully");
         } catch (Exception e) {
             e.printStackTrace();
