@@ -2,16 +2,28 @@ package address;
 
 import address.data.*;
 import java.util.Scanner;
+
+/**
+ * Clase principal para la aplicación del libro de direcciones.
+ */
 public class AddressBookApplication {
+
+    /**
+     * Método principal que ejecuta la aplicación del libro de direcciones.
+     * 
+     * @param args Argumentos de línea de comando (no se utilizan).
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         AddressBook addressEntries = AddressBook.getInstance();
         Menu start = new Menu(addressEntries);
         boolean runProgram = true;
-        while(runProgram == true) {
+
+        while (runProgram) {
             start.displayMenu();
             String answer = sc.nextLine();
-            switch(answer) {
+
+            switch (answer) {
                 case "a":
                     System.out.println("Enter your contact data");
                     System.out.println("First name: ");
@@ -53,7 +65,7 @@ public class AddressBookApplication {
                             } else {
                                 System.out.println("Please choose a valid option. ");
                             }
-                        } while (saving == true); 
+                        } while (saving); 
                     } else {
                         System.out.println("This contact already exists and won't be added again.");
                     }
@@ -65,8 +77,8 @@ public class AddressBookApplication {
                     break;
                 case "c":
                     System.out.println("Enter a last name or the start of a last name: ");
-                    String startOFLastName = sc.nextLine();
-                    addressEntries.find(startOFLastName);
+                    String startOfLastName = sc.nextLine();
+                    addressEntries.find(startOfLastName);
                     break;
                 case "d":
                     System.out.println("Enter the contact last name you want to remove: ");
@@ -87,7 +99,7 @@ public class AddressBookApplication {
                 case "f":
                     System.out.println("Goodbye!");
                     runProgram = false;
-                    return;
+                    break;
                 default:
                     System.out.println("Invalid option. Try again.");
             }

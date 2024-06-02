@@ -1,15 +1,28 @@
 package address.data;
+
 import java.util.ArrayList;
 import java.io.*;
 import java.util.Comparator;
+
+/**
+ * Representa un libro de direcciones que contiene varias entradas de direcciones.
+ */
 public class AddressBook {
 
-    // Instanciación del Arraylist con las entradas de directorio
+    // Instanciación del ArrayList con las entradas de directorio
     private ArrayList<AddressEntry> addressEntries = new ArrayList<>();
     private static AddressBook instance;
 
+    /**
+     * Constructor privado para implementar el patrón Singleton.
+     */
     private AddressBook() {}
 
+    /**
+     * Obtiene la instancia única de AddressBook.
+     * 
+     * @return La instancia única de AddressBook.
+     */
     public static AddressBook getInstance() {
         if (instance == null) {
             instance = new AddressBook();
@@ -17,11 +30,27 @@ public class AddressBook {
         return instance;
     }
 
+    /**
+     * Obtiene todas las entradas de dirección.
+     * 
+     * @return Una lista de todas las entradas de dirección.
+     */
     public ArrayList<AddressEntry> getEntries() {
         return addressEntries;
     }
 
-    // Método para añadir entradas de directorio al Arraylist de estos objetos
+    /**
+     * Añade una nueva entrada de dirección al ArrayList de estas.
+     * 
+     * @param fName Nombre de pila.
+     * @param lName Apellido.
+     * @param street Calle.
+     * @param city Ciudad.
+     * @param state Estado.
+     * @param zipCode Código postal.
+     * @param email Dirección de correo electrónico.
+     * @param phoneNumber Número de teléfono.
+     */
     public void add(String fName, String lName, String street, String city, String state, int zipCode, String email, String phoneNumber) {
         AddressEntry tempEntry = new AddressEntry();
         tempEntry.setFirstName(fName);
@@ -35,16 +64,24 @@ public class AddressBook {
         addressEntries.add(tempEntry);
     }
 
-    // Método que permite almacenar una entrada de directorio en forma de archivo .txt o bloc de notas
+    /**
+     * Almacena una entrada de dirección en un archivo .txt.
+     * 
+     * @param tempEntry La entrada de dirección a almacenar.
+     */
     public void saveToFile(AddressEntry tempEntry) {
         try (FileWriter saveEntry = new FileWriter(tempEntry.getLastName() + "_" + tempEntry.getFirstName() + ".txt")) {
             saveEntry.write(tempEntry.toString());
         } catch (Exception e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
-    // Método que permite la lectura de un archivo .txt para ser añadido al Arraylist compuesto de entradas de directorio
+    /**
+     * Lee un archivo .txt y añade su contenido al ArrayList de entradas de dirección.
+     * 
+     * @param filename El nombre del archivo a leer.
+     */
     public void readFromFile(String filename) {
         try (BufferedReader loadEntry = new BufferedReader(new FileReader(filename))) {    
             String[] addressElements = new String[8];
@@ -58,18 +95,20 @@ public class AddressBook {
                     index = 0;
                 }
             }
-            System.out.println("File " + filename + " loaded succesfully");
+            System.out.println("File " + filename + " loaded successfully");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // Método para buscar una entrada específica mediante el inicio del apellido de la persona a buscar
+    /**
+     * Busca una entrada específica utilizando el inicio del apellido de la persona.
+     * 
+     * @param startOfLastName El inicio del apellido a buscar.
+     */
     public void find(String startOfLastName) {
         ArrayList<AddressEntry> coincidences = new ArrayList<>();
-        for(int i = 0; i < addressEntries.size(); i++) {
-            AddressEntry tempEntry;
-            tempEntry = addressEntries.get(i);
+        for (AddressEntry tempEntry : addressEntries) {
             if (tempEntry.getLastName().toLowerCase().contains(startOfLastName.toLowerCase())) {
                 coincidences.add(tempEntry);
             }
@@ -77,45 +116,51 @@ public class AddressBook {
         if (coincidences.isEmpty()) {
             System.out.println("There are no contacts with that last name.");
         } else {
-            for(int i = 0; i < coincidences.size(); i++) {
-                System.out.println("Coincidence number " + (i+1));
+            for (int i = 0; i < coincidences.size(); i++) {
+                System.out.println("Coincidence number " + (i + 1));
                 System.out.println(coincidences.get(i).toString());
             }
         }
     }
 
-    // Métodos que permiten remover una entrada mediante el apellido de la persona
-
+    /**
+     * Busca y muestra una entrada específica utilizando el apellido de la persona.
+     * 
+     * @param lastName El apellido de la entrada a buscar.
+     */
     public void seek(String lastName) {
         boolean found = false;
-        for(int i = 0; i < addressEntries.size(); i++) {
-            AddressEntry tempEntry;
-            tempEntry = addressEntries.get(i);
-            AddressEntry choosenEntry;
+        for (AddressEntry tempEntry : addressEntries) {
             if (tempEntry.getLastName().equalsIgnoreCase(lastName)) {
-                choosenEntry = tempEntry;
                 System.out.println("This entry was found: ");
-                System.out.println(choosenEntry.toString());
+                System.out.println(tempEntry.toString());
                 found = true;
                 break;
             }
         }
         if (!found) {
-            System.out.println("There are no contacts with that last name. ");
+            System.out.println("There are no contacts with that last name.");
         }
     }
 
+    /**
+     * Elimina una entrada utilizando el apellido de la persona.
+     * 
+     * @param lastName El apellido de la entrada a eliminar.
+     */
     public void remove(String lastName) {
         addressEntries.removeIf(tempEntry -> tempEntry.getLastName().equalsIgnoreCase(lastName));
-        System.out.println("This entry was removed successfully. ");
+        System.out.println("This entry was removed successfully.");
     }
 
-    // Mostrar todas las entradas registradas en el Arraylist de directorio
+    /**
+     * Muestra todas las entradas registradas en el ArrayList de directorio.
+     */
     public void show() {
         if (addressEntries.isEmpty()) {
             System.out.println("The Address Book is empty. Try by adding a new contact or loading a File.");
         } else {
-            Comparator <AddressEntry> lastNameComparing = Comparator.comparing(AddressEntry::getLastName);
+            Comparator<AddressEntry> lastNameComparing = Comparator.comparing(AddressEntry::getLastName);
             addressEntries.sort(lastNameComparing);
             for (AddressEntry tempEntry : addressEntries) {
                 System.out.println(tempEntry.toString() + "\n");
