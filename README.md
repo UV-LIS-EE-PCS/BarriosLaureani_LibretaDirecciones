@@ -44,12 +44,11 @@ Este programa tiene las siguientes operaciones disponibles para el usuario:
 package address.data;
 
 /**
- * Representa una entrada en una libreta de direcciones.
- * Contiene detalles personales como nombre, dirección, número de teléfono y correo electrónico.
+ * Representa una entrada de dirección en un directorio.
  */
 public class AddressEntry {
 
-    // Variables que componen una entrada de directorio
+    // Variables por las que se compone una entrada de directorio
     private String firstName;
     private String lastName;
     private String street;
@@ -60,107 +59,187 @@ public class AddressEntry {
     private String email;
 
     /**
-     * Constructor por defecto.
+     * Constructor vacío para crear una entrada de dirección vacía.
      */
     public AddressEntry() {
+
     }
 
     /**
-     * Constructor parametrizado.
-     *
-     * @param firstName   Nombre del contacto.
-     * @param lastName    Apellido del contacto.
-     * @param street      Dirección del contacto.
-     * @param city        Ciudad del contacto.
-     * @param state       Estado del contacto.
-     * @param zipCode     Código postal del contacto.
-     * @param phoneNumber Número de teléfono del contacto.
-     * @param email       Dirección de correo electrónico del contacto.
+     * Constructor parametrizado para crear una entrada de dirección con los datos proporcionados.
+     * 
+     * @param firstName Nombre de pila.
+     * @param lastName Apellido.
+     * @param street Calle.
+     * @param city Ciudad.
+     * @param state Estado.
+     * @param zipCode Código postal.
+     * @param email Dirección de correo electrónico.
+     * @param phoneNumber Número de teléfono.
      */
-    public AddressEntry(String firstName, String lastName, String street, String city, String state, int zipCode, String phoneNumber, String email) {
+    public AddressEntry(String firstName, String lastName, String street, String city, String state, int zipCode, String email, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
-        this.phoneNumber = phoneNumber;
         this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
-    // Getters y setters
+    /**
+     * Obtiene el nombre de pila.
+     * 
+     * @return El nombre de pila.
+     */
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
+    /**
+     * Obtiene el apellido.
+     * 
+     * @return El apellido.
+     */
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
+    /**
+     * Obtiene la calle.
+     * 
+     * @return La calle.
+     */
     public String getStreet() {
         return street;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
+    /**
+     * Obtiene la ciudad.
+     * 
+     * @return La ciudad.
+     */
     public String getCity() {
         return city;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
+    /**
+     * Obtiene el estado.
+     * 
+     * @return El estado.
+     */
     public String getState() {
         return state;
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
-
+    /**
+     * Obtiene el código postal.
+     * 
+     * @return El código postal.
+     */
     public int getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
-    }
-
+    /**
+     * Obtiene el número de teléfono.
+     * 
+     * @return El número de teléfono.
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
+    /**
+     * Obtiene la dirección de correo electrónico.
+     * 
+     * @return La dirección de correo electrónico.
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Establece el nombre de pila.
+     * 
+     * @param firstName El nombre de pila.
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * Establece el apellido.
+     * 
+     * @param lastName El apellido.
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    /**
+     * Establece la calle.
+     * 
+     * @param street La calle.
+     */
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    /**
+     * Establece la ciudad.
+     * 
+     * @param city La ciudad.
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    /**
+     * Establece el estado.
+     * 
+     * @param state El estado.
+     */
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    /**
+     * Establece el código postal.
+     * 
+     * @param zipCode El código postal.
+     */
+    public void setZipCode(int zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    /**
+     * Establece el número de teléfono.
+     * 
+     * @param phoneNumber El número de teléfono.
+     */
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    /**
+     * Establece la dirección de correo electrónico.
+     * 
+     * @param email La dirección de correo electrónico.
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
     /**
-     * Convierte la entrada en una cadena de texto.
-     *
-     * @return Una cadena de texto con la información de la entrada.
+     * Retorna una representación en cadena de la entrada de dirección.
+     * 
+     * @return Una cadena que contiene todos los campos de la entrada de dirección.
      */
     @Override
     public String toString() {
-        return firstName + "\n" + lastName + "\n" + street + "\n" + city + "\n" + state + "\n" + zipCode + "\n" + phoneNumber + "\n" + email;
+        return getFirstName() + "\n" + getLastName() + "\n" + getStreet() + "\n" + getCity() + "\n" + getState() + "\n" + getZipCode() + "\n" + getPhoneNumber() + "\n" + getEmail();
     }
 }
 ```
@@ -174,22 +253,22 @@ import java.io.*;
 import java.util.Comparator;
 
 /**
- * Clase que representa una libreta de direcciones que contiene múltiples entradas de direcciones.
+ * Representa un libro de direcciones que contiene varias entradas de direcciones.
  */
 public class AddressBook {
 
+    // Instanciación del ArrayList con las entradas de directorio
     private ArrayList<AddressEntry> addressEntries = new ArrayList<>();
     private static AddressBook instance;
 
     /**
      * Constructor privado para implementar el patrón Singleton.
      */
-    private AddressBook() {
-    }
+    private AddressBook() {}
 
     /**
-     * Obtiene la instancia única de la libreta de direcciones.
-     *
+     * Obtiene la instancia única de AddressBook.
+     * 
      * @return La instancia única de AddressBook.
      */
     public static AddressBook getInstance() {
@@ -200,35 +279,43 @@ public class AddressBook {
     }
 
     /**
-     * Obtiene todas las entradas de la libreta de direcciones.
-     *
-     * @return Una lista de todas las entradas de direcciones.
+     * Obtiene todas las entradas de dirección.
+     * 
+     * @return Una lista de todas las entradas de dirección.
      */
     public ArrayList<AddressEntry> getEntries() {
         return addressEntries;
     }
 
     /**
-     * Añade una nueva entrada a la libreta de direcciones.
-     *
-     * @param fName      Nombre del contacto.
-     * @param lName      Apellido del contacto.
-     * @param street     Dirección del contacto.
-     * @param city       Ciudad del contacto.
-     * @param state      Estado del contacto.
-     * @param zipCode    Código postal del contacto.
-     * @param email      Dirección de correo electrónico del contacto.
-     * @param phoneNumber Número de teléfono del contacto.
+     * Añade una nueva entrada de dirección al ArrayList de estas.
+     * 
+     * @param fName Nombre de pila.
+     * @param lName Apellido.
+     * @param street Calle.
+     * @param city Ciudad.
+     * @param state Estado.
+     * @param zipCode Código postal.
+     * @param email Dirección de correo electrónico.
+     * @param phoneNumber Número de teléfono.
      */
     public void add(String fName, String lName, String street, String city, String state, int zipCode, String email, String phoneNumber) {
-        AddressEntry tempEntry = new AddressEntry(fName, lName, street, city, state, zipCode, phoneNumber, email);
+        AddressEntry tempEntry = new AddressEntry();
+        tempEntry.setFirstName(fName);
+        tempEntry.setLastName(lName);
+        tempEntry.setStreet(street);
+        tempEntry.setCity(city);
+        tempEntry.setState(state);
+        tempEntry.setZipCode(zipCode);
+        tempEntry.setEmail(email);
+        tempEntry.setPhoneNumber(phoneNumber);
         addressEntries.add(tempEntry);
     }
 
     /**
-     * Guarda una entrada de dirección en un archivo de texto.
-     *
-     * @param tempEntry La entrada de dirección a guardar.
+     * Almacena una entrada de dirección en un archivo .txt.
+     * 
+     * @param tempEntry La entrada de dirección a almacenar.
      */
     public void saveToFile(AddressEntry tempEntry) {
         try (FileWriter saveEntry = new FileWriter(tempEntry.getLastName() + "_" + tempEntry.getFirstName() + ".txt")) {
@@ -239,12 +326,12 @@ public class AddressBook {
     }
 
     /**
-     * Lee una entrada de dirección desde un archivo de texto y la añade a la libreta de direcciones.
-     *
-     * @param filename El nombre del archivo desde el cual leer la entrada de dirección.
+     * Lee un archivo .txt y añade su contenido al ArrayList de entradas de dirección.
+     * 
+     * @param filename El nombre del archivo a leer.
      */
     public void readFromFile(String filename) {
-        try (BufferedReader loadEntry = new BufferedReader(new FileReader(filename))) {
+        try (BufferedReader loadEntry = new BufferedReader(new FileReader(filename))) {    
             String[] addressElements = new String[8];
             int index = 0;
             String line;
@@ -263,69 +350,69 @@ public class AddressBook {
     }
 
     /**
-     * Busca entradas en la libreta de direcciones por el comienzo del apellido.
-     *
-     * @param startOfLastName El inicio del apellido por el cual buscar.
+     * Busca una entrada específica utilizando el inicio del apellido de la persona.
+     * 
+     * @param startOfLastName El inicio del apellido a buscar.
      */
-    public ArrayList<AddressEntry> find(String startOfLastName) {
+    public void find(String startOfLastName) {
         ArrayList<AddressEntry> coincidences = new ArrayList<>();
         for (AddressEntry tempEntry : addressEntries) {
             if (tempEntry.getLastName().toLowerCase().contains(startOfLastName.toLowerCase())) {
                 coincidences.add(tempEntry);
             }
         }
-        return coincidences;
+        if (coincidences.isEmpty()) {
+            System.out.println("There are no contacts with that last name.");
+        } else {
+            for (int i = 0; i < coincidences.size(); i++) {
+                System.out.println("Coincidence number " + (i + 1));
+                System.out.println(coincidences.get(i).toString());
+            }
+        }
     }
 
     /**
-     * Busca una entrada en la libreta de direcciones por el apellido.
-     *
-     * @param lastName El apellido por el cual buscar.
+     * Busca y muestra una entrada específica utilizando el apellido de la persona.
+     * 
+     * @param lastName El apellido de la entrada a buscar.
      */
     public void seek(String lastName) {
         boolean found = false;
         for (AddressEntry tempEntry : addressEntries) {
             if (tempEntry.getLastName().equalsIgnoreCase(lastName)) {
-                System.out.println("Esta entrada fue encontrada: ");
+                System.out.println("This entry was found: ");
                 System.out.println(tempEntry.toString());
                 found = true;
                 break;
             }
         }
         if (!found) {
-            System.out.println("No hay contactos con ese apellido. ");
+            System.out.println("There are no contacts with that last name.");
         }
     }
 
     /**
-     * Elimina una entrada de la libreta de direcciones por el apellido.
-     *
+     * Elimina una entrada utilizando el apellido de la persona.
+     * 
      * @param lastName El apellido de la entrada a eliminar.
      */
     public void remove(String lastName) {
-        boolean found = false;
-        for (int i = 0; i < addressEntries.size(); i++) {
-            if (addressEntries.get(i).getLastName().equalsIgnoreCase(lastName)) {
-                System.out.println("Eliminando la siguiente entrada:");
-                System.out.println(addressEntries.get(i).toString());
-                addressEntries.remove(i);
-                found = true;
-                i--;  // Ajustar índice después de la eliminación
-            }
-        }
-        if (!found) {
-            System.out.println("No se encontraron contactos con ese apellido.");
-        }
+        addressEntries.removeIf(tempEntry -> tempEntry.getLastName().equalsIgnoreCase(lastName));
+        System.out.println("This entry was removed successfully.");
     }
 
     /**
-     * Imprime todas las entradas de direcciones ordenadas por apellido y nombre.
+     * Muestra todas las entradas registradas en el ArrayList de directorio.
      */
     public void show() {
-        addressEntries.sort(Comparator.comparing(AddressEntry::getLastName).thenComparing(AddressEntry::getFirstName));
-        for (AddressEntry tempEntry : addressEntries) {
-            System.out.println(tempEntry.toString());
-            System.out.println("-----------");
+        if (addressEntries.isEmpty()) {
+            System.out.println("The Address Book is empty. Try by adding a new contact or loading a File.");
+        } else {
+            Comparator<AddressEntry> lastNameComparing = Comparator.comparing(AddressEntry::getLastName);
+            addressEntries.sort(lastNameComparing);
+            for (AddressEntry tempEntry : addressEntries) {
+                System.out.println(tempEntry.toString() + "\n");
+            }
         }
     }
 }
@@ -338,40 +425,41 @@ package address;
 import address.data.*;
 
 /**
- * Clase que representa el menú para interactuar con la libreta de direcciones.
+ * Representa un menú para interactuar con el libro de direcciones.
  */
 public class Menu {
+
     private AddressBook menuBook;
 
     /**
-     * Constructor para inicializar el menú con una libreta de direcciones.
-     *
-     * @param menuBook La libreta de direcciones a ser usada en el menú.
+     * Constructor que inicializa el menú con un libro de direcciones.
+     * 
+     * @param menuBook El libro de direcciones a utilizar.
      */
     public Menu(AddressBook menuBook) {
         this.menuBook = menuBook;
     }
 
     /**
-     * Muestra las opciones del menú al usuario.
+     * Muestra el menú con las opciones disponibles.
      */
     public void displayMenu() {
         System.out.println("===============================");
-        System.out.println("Elige una opción del menú");
-        System.out.println("a) Añadir");
-        System.out.println("b) Cargar desde archivo");
-        System.out.println("c) Buscar");
-        System.out.println("d) Eliminar");
-        System.out.println("e) Mostrar todas las entradas");
-        System.out.println("f) Salir");
+        System.out.println("Choose an option from the menu");
+        System.out.println("a) Add");
+        System.out.println("b) Load from file");
+        System.out.println("c) Find");
+        System.out.println("d) Remove");
+        System.out.println("e) Show all entries");
+        System.out.println("f) Quit");
         System.out.println("===============================");
     }
 
     /**
-     * Verifica si un contacto existe en la libreta de direcciones.
-     *
-     * @param firstName Nombre del contacto.
-     * @param lastName  Apellido del contacto.
+     * Verifica si un contacto existe en el libro de direcciones.
+     * 
+     * @param firstName El nombre de pila del contacto.
+     * @param lastName El apellido del contacto.
      * @return true si el contacto existe, false en caso contrario.
      */
     public boolean contactExists(String firstName, String lastName) {
@@ -384,27 +472,27 @@ public class Menu {
     }
 
     /**
-     * Añade una nueva entrada a la libreta de direcciones si no existe previamente.
-     *
-     * @param firstName   Nombre del contacto.
-     * @param lastName    Apellido del contacto.
-     * @param street      Dirección del contacto.
-     * @param city        Ciudad del contacto.
-     * @param state       Estado del contacto.
-     * @param zipCode     Código postal del contacto.
-     * @param email       Correo electrónico del contacto.
-     * @param phoneNumber Número de teléfono del contacto.
+     * Añade un contacto al libro de direcciones después de verificar si ya existe.
+     * 
+     * @param firstName El nombre de pila del contacto.
+     * @param lastName El apellido del contacto.
+     * @param street La calle del contacto.
+     * @param city La ciudad del contacto.
+     * @param state El estado del contacto.
+     * @param zipCode El código postal del contacto.
+     * @param email La dirección de correo electrónico del contacto.
+     * @param phoneNumber El número de teléfono del contacto.
      */
     public void addCheck(String firstName, String lastName, String street, String city, String state, int zipCode, String email, String phoneNumber) {
         try {
             if (!contactExists(firstName, lastName)) {
                 menuBook.add(firstName, lastName, street, city, state, zipCode, email, phoneNumber);
-                System.out.println("¡Contacto añadido exitosamente!");
+                System.out.println("Contact added successfully!");
             } else {
-                System.out.println("Este contacto ya existe y no se añadirá nuevamente.");
+                System.out.println("This contact already exists and won't be added again.");
             }
         } catch (Exception e) {
-            System.out.println("Hubo un error al añadir el contacto: " + e.getMessage());
+            System.out.println("There was an error adding the contact: " + e.getMessage());
         }
     }
 }
@@ -417,104 +505,332 @@ import address.data.*;
 import java.util.Scanner;
 
 /**
- * Clase principal para la aplicación de la libreta de direcciones.
- * Permite al usuario interactuar con la libreta de direcciones a través de un menú.
+ * Clase principal para la aplicación del libro de direcciones.
  */
 public class AddressBookApplication {
+
+    /**
+     * Método principal que ejecuta la aplicación del libro de direcciones.
+     * 
+     * @param args Argumentos de línea de comando (no se utilizan).
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         AddressBook addressEntries = AddressBook.getInstance();
         Menu start = new Menu(addressEntries);
         boolean runProgram = true;
-        
+
         while (runProgram) {
             start.displayMenu();
             String answer = sc.nextLine();
-            
+
             switch (answer) {
                 case "a":
-                    System.out.println("Ingrese los datos de su contacto");
-                    System.out.println("Nombre: ");
+                    System.out.println("Enter your contact data");
+                    System.out.println("First name: ");
                     String firstName = sc.nextLine();
-                    System.out.println("Apellido: ");
+                    System.out.println("Last name: ");
                     String lastName = sc.nextLine();
-                    System.out.println("Calle: ");
+                    System.out.println("Street: ");
                     String street = sc.nextLine();
-                    System.out.println("Ciudad: ");
+                    System.out.println("City: ");
                     String city = sc.nextLine();
-                    System.out.println("Estado: ");
+                    System.out.println("State: ");
                     String state = sc.nextLine();
-                    System.out.println("Código Postal: ");
+                    System.out.println("Zip Code: ");
                     while (!sc.hasNextInt()) {
-                        System.out.println("Entrada inválida. Por favor, ingrese un Código Postal válido:");
+                        System.out.println("Invalid input. Please enter a valid Zip Code:");
                         sc.next();
                     }
                     int zipCode = sc.nextInt();
                     sc.nextLine();
-                    System.out.println("Correo electrónico: ");
+                    System.out.println("Email: ");
                     String email = sc.nextLine();
-                    System.out.println("Número de teléfono: ");
+                    System.out.println("Phone number");
                     String phoneNumber = sc.nextLine();
-                    
                     if (!start.contactExists(firstName, lastName)) {
                         start.addCheck(firstName, lastName, street, city, state, zipCode, email, phoneNumber);
                         AddressEntry tempEntry = new AddressEntry(firstName, lastName, street, city, state, zipCode, email, phoneNumber);
                         boolean saving = true;
-                        
                         do {
-                            System.out.println("¿Le gustaría guardar esta entrada en un archivo de texto? s/n");
+                            System.out.println("Would you like to save this entry into a text file? y/n");
                             char confirmation = sc.next().charAt(0);
                             sc.nextLine();
-                            if (confirmation == 's') {
+                            if (confirmation == 'y') {
                                 addressEntries.saveToFile(tempEntry);
-                                System.out.println("Esta entrada está ahora guardada en un archivo .txt.");
+                                System.out.println("This entry is now saved on a .txt File. ");
                                 saving = false;
                             } else if (confirmation == 'n') {
-                                System.out.println("Esta entrada no está guardada. Se perderá después de que el programa se detenga.");
+                                System.out.println("This entry isn't saved. It will lose after the program stops. ");
                                 saving = false;
                             } else {
-                                System.out.println("Por favor, elija una opción válida.");
+                                System.out.println("Please choose a valid option. ");
                             }
                         } while (saving); 
                     } else {
-                        System.out.println("Este contacto ya existe y no se añadirá nuevamente.");
+                        System.out.println("This contact already exists and won't be added again.");
                     }
                     break;
                 case "b":
-                    System.out.println("Ingrese el nombre del archivo");
+                    System.out.println("Enter the file name");
                     String fileName = sc.nextLine();
                     addressEntries.readFromFile(fileName);
                     break;
                 case "c":
-                    System.out.println("Ingrese un apellido o el inicio de un apellido: ");
-                    String startOFLastName = sc.nextLine();
-                    addressEntries.find(startOFLastName);
+                    System.out.println("Enter a last name or the start of a last name: ");
+                    String startOfLastName = sc.nextLine();
+                    addressEntries.find(startOfLastName);
                     break;
                 case "d":
-                    System.out.println("Ingrese el apellido del contacto que desea eliminar: ");
+                    System.out.println("Enter the contact last name you want to remove: ");
                     String seekLastName = sc.nextLine();
                     addressEntries.seek(seekLastName);
-                    System.out.println("¿Está seguro de que desea eliminar este contacto? s/n");
+                    System.out.println("Are you sure you wanna remove this contact? y/n");
                     char response = sc.next().charAt(0);
                     sc.nextLine();
-                    if (response == 's') {
+                    if (response == 'y') {
                         addressEntries.remove(seekLastName);
                     } else if (response == 'n') {
-                        System.out.println("Esta entrada permanece en sus contactos.");
+                        System.out.println("This entry remains in your contacts. ");
                     }
                     break;
                 case "e":
                     addressEntries.show();
                     break;
                 case "f":
-                    System.out.println("¡Adiós!");
+                    System.out.println("Goodbye!");
                     runProgram = false;
-                    return;
+                    break;
                 default:
-                    System.out.println("Opción inválida. Inténtelo de nuevo.");
+                    System.out.println("Invalid option. Try again.");
             }
         }
         sc.close();
+    }
+}
+```
+### AddressEntryTest
+```java
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import address.data.AddressEntry;
+
+/**
+ * Clase de prueba para la clase AddressEntry.
+ */
+public class AddressEntryTest {
+
+    /**
+     * Prueba el constructor y los getters de la clase AddressEntry.
+     */
+    @Test
+    void testConstructorAndGetters() {
+        AddressEntry entry = new AddressEntry("Gary", "Stu", "Calle ejemplo", "Cosoleacaque", "Veracruz", 12345, "gary@example.com", "1234567890");
+        assertEquals("Gary", entry.getFirstName());
+        assertEquals("Stu", entry.getLastName());
+        assertEquals("Calle ejemplo", entry.getStreet());
+        assertEquals("Cosoleacaque", entry.getCity());
+        assertEquals("Veracruz", entry.getState());
+        assertEquals(12345, entry.getZipCode());
+        assertEquals("gary@example.com", entry.getEmail());
+        assertEquals("1234567890", entry.getPhoneNumber());
+    }
+
+    /**
+     * Prueba los setters de la clase AddressEntry.
+     */
+    @Test
+    void testSetters() {
+        AddressEntry entry = new AddressEntry();
+        entry.setFirstName("Mary");
+        entry.setLastName("Sue");
+        entry.setStreet("Calle ejemplo 2");
+        entry.setCity("Orizaba");
+        entry.setState("Veracruz");
+        entry.setZipCode(54321);
+        entry.setEmail("mary@example.com");
+        entry.setPhoneNumber("9876543210");
+        assertEquals("Mary", entry.getFirstName());
+        assertEquals("Sue", entry.getLastName());
+        assertEquals("Calle ejemplo 2", entry.getStreet());
+        assertEquals("Orizaba", entry.getCity());
+        assertEquals("Veracruz", entry.getState());
+        assertEquals(54321, entry.getZipCode());
+        assertEquals("mary@example.com", entry.getEmail());
+        assertEquals("9876543210", entry.getPhoneNumber());
+    }
+
+    /**
+     * Prueba el método toString de la clase AddressEntry.
+     */
+    @Test
+    void testToString() {
+        AddressEntry entry = new AddressEntry("Gary", "Stu", "Calle ejemplo", "Cosoleacaque", "Veracruz", 12345, "gary@example.com", "1234567890");
+        String expectedString = "Gary\nStu\nCalle ejemplo\nCosoleacaque\nVeracruz\n12345\n1234567890\ngary@example.com";
+        assertEquals(expectedString, entry.toString());
+    }
+}
+```
+### AddressBookTest
+```java
+package tests;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import address.data.AddressBook;
+
+/**
+ * Clase de prueba para la clase AddressBook.
+ */
+public class AddressBookTest {
+
+    private AddressBook addressBook;
+
+    /**
+     * Configuración inicial para cada prueba.
+     */
+    @BeforeEach
+    public void setUp() {
+        addressBook = AddressBook.getInstance();
+    }
+
+    /**
+     * Prueba el método add de la clase AddressBook.
+     */
+    @Test
+    void testAdd() {
+        addressBook.add("Gary", "Stu", "Calle Ejemplo", "Cosoleacaque", "Veracruz", 12345, "gary@example.com", "1234567890");
+        assertEquals(1, addressBook.getEntries().size());
+    }
+
+    /**
+     * Prueba el método find de la clase AddressBook.
+     */
+    @Test
+    void testFind() {
+        addressBook.add("Gary", "Stu", "Calle Ejemplo", "Cosoleacaque", "Veracruz", 12345, "gary@example.com", "1234567890");
+        addressBook.add("Mary", "Sue", "Calle Ejemplo 2", "Orizaba", "Veracruz", 54321, "mary@example.com", "9876543210");
+        addressBook.find("S");
+        assertEquals(2, addressBook.getEntries().size());
+    }
+
+    /**
+     * Prueba el método getEntries de la clase AddressBook.
+     */
+    @Test
+    void testGetEntries() {
+        assertNotNull(addressBook.getEntries());
+    }
+
+    /**
+     * Prueba el método getInstance de la clase AddressBook.
+     */
+    @Test
+    void testGetInstance() {
+        AddressBook instance1 = AddressBook.getInstance();
+        AddressBook instance2 = AddressBook.getInstance();
+        assertEquals(instance1, instance2);
+    }
+
+    /**
+     * Prueba el método readFromFile de la clase AddressBook.
+     */
+    @Test
+    void testReadFromFile() {
+        addressBook.readFromFile("Barrios_Jorge.txt");
+        assertEquals(1, addressBook.getEntries().size());
+    }
+
+    /**
+     * Prueba el método remove de la clase AddressBook.
+     */
+    @Test
+    void testRemove() {
+        addressBook.add("Gary", "Stu", "Calle Ejemplo", "Cosoleacaque", "Veracruz", 12345, "gary@example.com", "1234567890");
+        addressBook.remove("Stu");
+        assertEquals(0, addressBook.getEntries().size());
+    }
+
+    /**
+     * Prueba el método saveToFile de la clase AddressBook.
+     */
+    @Test
+    void testSaveToFile() {
+        addressBook.add("Gary", "Stu", "Calle Ejemplo", "Cosoleacaque", "Veracruz", 12345, "gary@example.com", "1234567890");
+        addressBook.add("Mary", "Sue", "Calle Ejemplo 2", "Orizaba", "Veracruz", 54321, "mary@example.com", "9876543210");
+        addressBook.show();
+        assertEquals(2, addressBook.getEntries().size());
+    }
+
+    /**
+     * Prueba el método seek de la clase AddressBook.
+     */
+    @Test
+    void testSeek() {
+        addressBook.add("Gary", "Stu", "Calle Ejemplo", "Cosoleacaque", "Veracruz", 12345, "gary@example.com", "1234567890");
+        addressBook.seek("Stu");
+        assertEquals(1, addressBook.getEntries().size());
+    }
+
+    /**
+     * Prueba el método show de la clase AddressBook.
+     */
+    @Test
+    void testShow() {
+        addressBook.add("Gary", "Stu", "Calle Ejemplo", "Cosoleacaque", "Veracruz", 12345, "gary@example.com", "1234567890");
+        addressBook.add("Mary", "Sue", "Calle Ejemplo 2", "Orizaba", "Veracruz", 54321, "mary@example.com", "9876543210");
+        addressBook.show();
+        assertEquals(2, addressBook.getEntries().size());
+    }
+}
+```
+### MenuTest
+```java
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import address.data.*;
+import address.Menu;
+
+/**
+ * Clase de prueba para la clase Menu.
+ */
+public class MenuTest {
+
+    private AddressBook menuBook;
+    private Menu menu;
+
+    /**
+     * Configuración inicial para cada prueba.
+     */
+    @BeforeEach
+    void setUp() {
+        menuBook = AddressBook.getInstance();
+        menu = new Menu(menuBook);
+    }
+
+    /**
+     * Prueba el método addCheck de la clase Menu.
+     */
+    @Test
+    void testAddCheck() {
+        menu.addCheck("Mary", "Sue", "Calle ejemplo 2", "Orizaba", "Veracruz", 54321, "mary@example.com", "9876543210");
+        assertTrue(menu.contactExists("Mary", "Sue"), "El contacto debería haber sido agregado");
+    }
+
+    /**
+     * Prueba el método contactExists de la clase Menu.
+     */
+    @Test
+    void testContactExists() {
+        menuBook.add("Gary", "Stu", "Calle Ejemplo", "Cosolea", "Veracruz", 12345, "gary@example.com", "1234567890");
+        assertTrue(menu.contactExists("Gary", "Stu"), "El contacto debería existir");
+        assertFalse(menu.contactExists("Mary", "Sue"), "El contacto no debería existir");
     }
 }
 ```
